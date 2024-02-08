@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { BadgeProps } from './types'
 
-const index: FC<BadgeProps> = ({
+const Index: FC<BadgeProps> = ({
     className,
     children
 }) => {
@@ -14,4 +14,4 @@ const index: FC<BadgeProps> = ({
     )
 }
 
-export default memo(index)
+export default memo(Index)

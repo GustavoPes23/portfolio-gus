@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { ImageProps } from './types';
 
-const Profile: FC<ImageProps> = ({
+const Image: FC<ImageProps> = ({
     className,
     src,
     alt
@@ -16,4 +16,4 @@ const Profile: FC<ImageProps> = ({
     )
 }
 
-export default memo(Profile);
+export default memo(Image);

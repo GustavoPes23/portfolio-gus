@@ -2,11 +2,11 @@ import { FC, memo } from 'react'
 
 import type { TextProps } from './types'
 
-const index: FC<TextProps> = ({
+const Index: FC<TextProps> = ({
     className,
     children
 }) => {
     return <span className={className || ""}>{children}</span>
 }
 
-export default memo(index)
+export default memo(Index)

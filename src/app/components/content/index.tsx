@@ -7,7 +7,7 @@ import FiltersContent from './filtersContent'
 import Items from '../items'
 import FiltersMobile from './filtersMobile'
 
-const index: FC = () => {
+const Index: FC = () => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
     const [filter, setFilter] = useState<string>("");
 
@@ -116,4 +116,4 @@ const index: FC = () => {
     )
 }
 
-export default memo(index);
+export default memo(Index);

@@ -14,7 +14,7 @@ import "./styles.css";
 import Circle from './circle';
 import Job from './job';
 
-const index: FC = () => {
+const Index: FC = () => {
     return (
         <main className="profile mx-auto">
             <section aria-labelledby="Profile" className="pb-24 pt-6">
@@ -84,4 +84,4 @@ const index: FC = () => {
     )
 }
 
-export default memo(index);
+export default memo(Index);

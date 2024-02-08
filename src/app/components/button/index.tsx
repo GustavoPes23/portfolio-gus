@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import type { ButtonProps } from './types';
 
-const index: FC<ButtonProps> = ({
+const Index: FC<ButtonProps> = ({
     className,
     children,
     onClick,
@@ -19,4 +19,4 @@ const index: FC<ButtonProps> = ({
     )
 }
 
-export default memo(index);
+export default memo(Index);

@@ -9,7 +9,7 @@ import EmailIcon from '../header/emailIcon';
 
 const year: number = new Date().getFullYear();
 
-const index: FC = () => {
+const Index: FC = () => {
     return (
         <footer className="footer" id="contact">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 lg:px-16">
@@ -42,4 +42,4 @@ const index: FC = () => {
     )
 }
 
-export default memo(index)
+export default memo(Index)

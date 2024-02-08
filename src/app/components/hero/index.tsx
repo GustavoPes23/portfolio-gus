@@ -6,7 +6,7 @@ import Header from '../header'
 
 import "./styles.css";
 
-const index: FC = () => {
+const Index: FC = () => {
     return (
         <div className="main-hero">
             <Header />
@@ -19,4 +19,4 @@ const index: FC = () => {
     )
 };
 
-export default memo(index);
+export default memo(Index);

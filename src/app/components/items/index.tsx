@@ -1,6 +1,4 @@
-import { FC, memo, useEffect } from "react";
-
-
+import { FC } from "react";
 
 import "./styles.css";
 
@@ -53,7 +51,7 @@ const products = [
     // More products...
 ]
 
-const index: FC<ItemsProps> = ({ filter }) => {
+const Index: FC<ItemsProps> = ({ filter }) => {
     const filtered = filter ? products.filter((product) => product.name === filter) : products;
 
     return (
@@ -70,4 +68,4 @@ const index: FC<ItemsProps> = ({ filter }) => {
     )
 }
 
-export default index;
+export default Index;

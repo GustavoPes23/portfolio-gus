@@ -5,7 +5,7 @@ import Logo from './logo';
 
 import "./styles.css";
 
-const index: FC = () => {
+const Index: FC = () => {
     return (
         <header className="absolute inset-x-0 top-0 z-50">
             <nav className="flex items-center justify-between p-6 lg:px-16" aria-label="Global">
@@ -22,4 +22,4 @@ const index: FC = () => {
     )
 }
 
-export default memo(index)
+export default memo(Index)
