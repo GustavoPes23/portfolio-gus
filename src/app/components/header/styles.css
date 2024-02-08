@@ -1,0 +1,25 @@
+.button-contact {
+    background-color: var(--primary-color-red);
+}
+
+.email-icon {
+    fill: white;
+    height: 2rem;
+}
+
+.main-logo {
+    fill: white;
+    height: 2rem;
+}
+
+.dialog {
+    background-color: var(--primary-color-blue);
+}
+
+.dialog-mobile {
+    background-color: var(--primary-color-grey);
+}
+
+.dialog-mobile .main-logo {
+    height: 4rem;
+}

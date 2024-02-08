@@ -1,0 +1,8 @@
+.footer {
+    background-color: var(--primary-color-blue);
+}
+
+.footer .email-icon {
+    height: 20px;
+    width: 20px;
+}

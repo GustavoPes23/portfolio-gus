@@ -1,0 +1,33 @@
+.profile {
+    background-color: #f3f7ff;
+}
+
+.profile-name {
+    background-color: var(--primary-color-yellow);
+    top: -30px;
+    position: relative;
+}
+
+.circle {
+    position: relative;
+    top: -233px;
+    left: 122px;
+}
+
+.star {
+    width: 70px;
+    height: 70px;
+}
+
+.text-job {
+    color: #adadad;
+    margin-top: -26px;
+}
+
+.linkedin-logo {
+    fill: var(--primary-color-blue);
+}
+
+.profile-individual, .linkedin-logo {
+    cursor: pointer;
+}
