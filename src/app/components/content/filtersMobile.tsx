@@ -2,14 +2,12 @@ import { FC, memo } from 'react'
 
 import { Menu } from '@headlessui/react'
 
-import { Filters } from '@/app/constants/Filters'
-
 import type { FiltersData } from '@/app/constants/types'
 import type { FilterProps } from './types';
 
 const classNames = (...classes: string[]): string => classes.filter(Boolean).join(' ');
 
-const FiltersMobile: FC<FilterProps> = ({ filter, setFilter }) => {
+const FiltersMobile: FC<FilterProps> = ({ filters, filter, setFilter }) => {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string, name: string): void => {
         e.preventDefault();
         setFilter(id !== "geral" ? name : "")
@@ -18,7 +16,7 @@ const FiltersMobile: FC<FilterProps> = ({ filter, setFilter }) => {
     return (
         <>
             {
-                Filters.map(({ id, name, total }: FiltersData) => (
+                filters.map(({ id, name, total }: FiltersData) => (
                     <Menu.Item
                         key={id}
                     >

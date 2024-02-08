@@ -33,7 +33,7 @@ const Index: FC = () => {
                             className="mt-10"
                         >
                             Somos apaixonados por resolver problemas
-                            com soluções inteligentes e criativa.
+                            com soluções inteligentes e criativas.
                         </Text>
                     </div>
                     <div

@@ -1,20 +1,24 @@
 import { FC, memo } from 'react'
 
+import Image from 'next/image'
+
 import { ImageProps } from './types';
 
-const Image: FC<ImageProps> = ({
+const Index: FC<ImageProps> = ({
     className,
     src,
     alt
 }) => {
     return (
-        <img
+        <Image
             loading="lazy"
             src={src}
+            width={500}
+            height={500}
             alt={alt}
             className={`h-full w-full object-cover object-center ${className || ""}`}
         />
     )
 }
 
-export default memo(Image);
+export default memo(Index);

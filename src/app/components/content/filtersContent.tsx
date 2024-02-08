@@ -1,14 +1,12 @@
 import { FC, memo } from 'react'
 
-import { Filters } from '@/app/constants/Filters'
-
 import type { FiltersData } from '@/app/constants/types'
 
 import type { FilterProps } from './types';
 
 const classNames = (...classes: string[]): string => classes.filter(Boolean).join(' ');
 
-const FiltersContent: FC<FilterProps> = ({ filter, setFilter }) => {
+const FiltersContent: FC<FilterProps> = ({ filters, filter, setFilter }) => {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string, name: string): void => {
         e.preventDefault();
         setFilter(id !== "geral" ? name : "")
@@ -16,7 +14,7 @@ const FiltersContent: FC<FilterProps> = ({ filter, setFilter }) => {
 
     return (
         <>
-            {Filters.map(({ id, name, total }: FiltersData) => (
+            {filters.map(({ id, name, total }: FiltersData) => (
                 <a
                     href="#"
                     onClick={(e) => handleClick(e, id, name)}

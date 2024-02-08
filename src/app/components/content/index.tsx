@@ -1,15 +1,48 @@
-import { Fragment, useState, FC, memo } from 'react'
+import { Fragment, useState, FC, memo, useMemo } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 import FiltersContent from './filtersContent'
-import Items from '../items'
+import AllItems from '../allItems'
 import FiltersMobile from './filtersMobile'
+
+import { Filters } from '@/app/constants/Filters'
+import { Items } from '@/app/constants/Items'
+import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE } from '@/app/constants/Tags'
+import { FiltersData, ItemData } from '@/app/constants/types'
+
+const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
+    const totalSites: number = Items.filter((item) => item.tag === ID_TAG_SITE)?.length;
+    const totalBrandDesign: number = Items.filter((item) => item.tag === ID_TAG_BRAND_DESIGN)?.length;
+    const totalLogo: number = Items.filter((item) => item.tag === ID_TAG_LOGO)?.length;
+    const total: number = totalSites + totalBrandDesign + totalLogo;
+
+    Filters.forEach((filter) => {
+        switch(filter.id) {
+            case ID_TAG_SITE:
+                filter.total = totalSites;
+
+                break;
+            case ID_TAG_BRAND_DESIGN:
+                filter.total = totalBrandDesign;
+
+                break;
+            case ID_TAG_LOGO:
+                filter.total = totalLogo;
+
+                break;
+            default:
+                filter.total = total;
+        }
+    });
+};
 
 const Index: FC = () => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
     const [filter, setFilter] = useState<string>("");
+
+    useMemo(() => setTotalFilters(Items, Filters), [Items, Filters]);
 
     return (
         <div className="bg-white">
@@ -62,6 +95,7 @@ const Index: FC = () => {
                             className='hidden md:inline-flex gap-x-20'    
                         >
                             <FiltersContent
+                                filters={Filters}
                                 filter={filter}
                                 setFilter={setFilter}
                             />
@@ -91,6 +125,7 @@ const Index: FC = () => {
                                     <Menu.Items className="absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                                         <div className="py-1">
                                             <FiltersMobile
+                                                filters={Filters}
                                                 filter={filter}
                                                 setFilter={setFilter}
                                             />
@@ -104,8 +139,9 @@ const Index: FC = () => {
                     <section aria-labelledby="products-heading" className="pb-24 pt-6">
                         <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
                             <div className="lg:col-span-3">
-                                <Items
+                                <AllItems
                                     filter={filter}
+                                    items={Items}
                                 />
                             </div>
                         </div>

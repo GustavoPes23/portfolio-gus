@@ -2,15 +2,9 @@ import { FC, memo } from 'react'
 
 import Badge from "../badge";
 
-interface ItemProps {
-    id: number,
-    name: string,
-    href: string,
-    imageSrc: string,
-    imageAlt: string
-}
+import { ItemData } from '@/app/constants/types';
 
-const Item: FC<ItemProps> = (props) => {
+const Item: FC<ItemData> = (props) => {
     return (
         <div key={props.id} className="group relative">
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-64 rounded-3xl">
