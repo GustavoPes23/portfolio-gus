@@ -9,9 +9,9 @@
 }
 
 .circle {
-    position: relative;
-    top: -233px;
-    left: 122px;
+    position: absolute;
+    margin-top: -230px;
+    margin-left: 199px;
 }
 
 .star {

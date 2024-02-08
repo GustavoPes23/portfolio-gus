@@ -18,7 +18,7 @@ const index: FC = () => {
     return (
         <main className="profile mx-auto">
             <section aria-labelledby="Profile" className="pb-24 pt-6">
-                <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-4 md:px-10 px-6">
+                <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-4 md:px-10 px-6">
                     <div className="col-span-1 sm:max-w-60 text-center sm:text-start">
                         <Text
                             className='text-5xl'
