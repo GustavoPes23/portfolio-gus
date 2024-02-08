@@ -76,7 +76,7 @@ const Index: FC = () => {
                             place="na Emais"
                             link="https://www.linkedin.com/in/luanadagustinho/"
                         />
-                        <Circle />
+                        {/* <Circle /> */}
                     </div>
                 </div>
             </section>
