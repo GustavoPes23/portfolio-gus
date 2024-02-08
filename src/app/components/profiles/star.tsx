@@ -1,11 +1,12 @@
 import { FC, memo } from 'react'
-import Image from '../image';
+
+import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 import StarImage from "../../../../public/images/estrela.svg"
 
 const Star: FC = () => {
     return (
-        <Image
+        <ImageWithLazyLoad
             className="star"
             src={StarImage.src}
             alt="star"

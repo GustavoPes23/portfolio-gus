@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { ProfileProps } from './types';
-import Image from '../image';
+import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 const Profile: FC<ProfileProps> = ({
     src,
@@ -16,7 +16,7 @@ const Profile: FC<ProfileProps> = ({
             <div 
                 className="aspect-h-1 aspect-w-1 overflow-hidden lg:aspect-none group-hover:opacity-75 sm:h-56 sm:w-56 h-80 w-80 rounded-3xl "
             >
-                <Image 
+                <ImageWithLazyLoad 
                     src={src}
                     alt={alt}
                 />

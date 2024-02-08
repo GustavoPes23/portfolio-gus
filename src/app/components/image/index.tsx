@@ -9,6 +9,7 @@ const Image: FC<ImageProps> = ({
 }) => {
     return (
         <img
+            loading="lazy"
             src={src}
             alt={alt}
             className={`h-full w-full object-cover object-center ${className || ""}`}
