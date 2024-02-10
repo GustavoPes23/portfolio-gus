@@ -44,7 +44,7 @@ const Index: FC = () => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
     const [filter, setFilter] = useState<string>("");
 
-    useMemo(() => setTotalFilters(Items, Filters), [Items, Filters]);
+    useMemo(() => setTotalFilters(Items, Filters), []);
 
     return (
         <div className="bg-white">
