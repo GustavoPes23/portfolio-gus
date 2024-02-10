@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 interface FiltersData {
     readonly id: string,
     readonly name: string;
@@ -5,12 +7,13 @@ interface FiltersData {
 };
 
 interface ItemData {
-    readonly id: number,
+    readonly id: v4,
     readonly name: string,
     readonly href: string,
-    readonly imageSrc: string,
+    readonly imageSrc: string | StaticImageData,
     readonly imageAlt: string,
-    readonly tag: string
+    readonly tag: string,
+    readonly link?: string,
 }
 
 export type {

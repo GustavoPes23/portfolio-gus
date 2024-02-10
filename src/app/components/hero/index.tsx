@@ -1,4 +1,3 @@
-"use client"
 import { FC, memo } from 'react'
 
 import HeroImage from './heroImage';
@@ -11,7 +10,7 @@ const Index: FC = () => {
         <div className="main-hero">
             <Header />
             <div className="relative isolate px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 flex items-center justify-center">
+                <div className="mx-auto max-w-2xl py-32 sm:py-48 flex items-center justify-center">
                     <HeroImage />
                 </div>
             </div>

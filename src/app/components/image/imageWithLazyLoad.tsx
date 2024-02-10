@@ -10,8 +10,14 @@ const ImageWithLazyLoad: FC<ImageProps> = ({
     alt
 }) => {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <LazyImage className={className} src={src} alt={alt} />
+        <Suspense 
+            fallback={<div>Loading...</div>}
+        >
+            <LazyImage 
+                className={className} 
+                src={src} 
+                alt={alt} 
+            />
         </Suspense>
     );
 };

@@ -1,5 +1,7 @@
 import { FC, memo } from 'react'
 
+import Text from '../text';
+
 import type { FiltersData } from '@/app/constants/types'
 
 import type { FilterProps } from './types';
@@ -24,7 +26,14 @@ const FiltersContent: FC<FilterProps> = ({ filters, filter, setFilter }) => {
                         'block px-4 py-2 text-sm'
                     )}
                     >
-                        {`${name} ${total}`}
+                        <Text>
+                            {name}
+                        </Text>
+                        <Text
+                            className='ms-1 text-gray-300'
+                        >
+                            {total}
+                        </Text>
                 </a>
             ))}
         </>

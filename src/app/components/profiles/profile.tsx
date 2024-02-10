@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 
 import { ProfileProps } from './types';
+
 import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 const Profile: FC<ProfileProps> = ({

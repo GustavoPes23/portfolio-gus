@@ -28,7 +28,7 @@ const FiltersMobile: FC<FilterProps> = ({ filters, filter, setFilter }) => {
                                 'block px-4 py-2 text-sm'
                             )}
                         >
-                            {`${name} ${total}`}
+                            {name}
                         </a>
                     </Menu.Item>
                 ))
