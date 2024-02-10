@@ -2,10 +2,10 @@ import { FC, memo } from 'react'
 
 import type { LinkedinLogoProps } from './types'
 
-const LinkedinLogo: FC<LinkedinLogoProps> = ({ link }) => {
+const LinkedinLogo: FC<LinkedinLogoProps> = ({ link, className }) => {
     return (
         <svg 
-            className="linkedin-logo" 
+            className={`linkedin-logo ${className || ""}`}
             xmlns="http://www.w3.org/2000/svg" 
             width="24" 
             height="24" 

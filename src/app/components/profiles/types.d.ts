@@ -19,6 +19,7 @@ interface JobProps {
 
 interface LinkedinLogoProps {
     readonly link: Link;
+    readonly className?: string;
 }
 
 export type {

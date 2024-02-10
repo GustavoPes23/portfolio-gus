@@ -8,12 +8,12 @@ import type { JobProps } from './types'
 const Job: FC<JobProps> = ({ description, place, link }) => {
     return (
         <Text
-            className='flex justify-start text-job gap-4 items-center'
+            className='flex justify-between text-job gap-4 items-center'
         >
             {description}
             <br />
             {place}
-            <LinkedinLogo 
+            <LinkedinLogo
                 link={link}
             />
         </Text>

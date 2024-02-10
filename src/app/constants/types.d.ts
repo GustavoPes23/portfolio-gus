@@ -6,7 +6,7 @@ interface FiltersData {
     total: number;
 };
 
-interface ItemData {
+interface ItemData extends ModalProps {
     readonly id: v4,
     readonly name: string,
     readonly href: string,

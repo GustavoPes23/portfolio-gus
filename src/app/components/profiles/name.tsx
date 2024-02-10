@@ -9,7 +9,7 @@ const Name: FC<NameProps> = ({ name, lastName }) => {
         <Text
             className="profile-name md:text-2xl text-3xl max-w-1 font-semibold"
         >
-            {name} <br className='md:block hidden' /> {lastName}
+            {name} <br /> {lastName}
         </Text>
     )
 }

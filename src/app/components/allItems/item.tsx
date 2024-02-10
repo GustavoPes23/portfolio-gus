@@ -10,10 +10,14 @@ const Item: FC<ItemData> = ({
     id, 
     name, 
     imageSrc, 
-    imageAlt 
+    imageAlt,
+    setOpen
 }) => {
     return (
-        <div key={id} className="group relative">
+        <div 
+            className="group relative item"
+            onClick={() => setOpen((prev: boolean) => !prev)}
+        >
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-64 rounded-3xl">
                 <Badge
                     className="badge inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10"
