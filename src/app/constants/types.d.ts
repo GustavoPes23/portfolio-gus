@@ -1,5 +1,7 @@
 import { v4 } from "uuid";
 
+import type { ModalProps } from "../components/modal/types";
+
 interface FiltersData {
     readonly id: string,
     readonly name: string;
