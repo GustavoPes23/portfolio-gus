@@ -84,6 +84,7 @@ const Index: FC = () => {
                                         alt="Luana"
                                         link="https://www.linkedin.com/in/luanadagustinho/"
                                     />
+                                    <Circle />
                                 </div>
                                 <div
                                     className="col-span-12"
@@ -102,7 +103,6 @@ const Index: FC = () => {
                                         link="https://www.linkedin.com/in/luanadagustinho/"
                                     />
                                 </div>
-                                {/* <Circle /> */}
                             </div>
                         </div>
                     </div>
