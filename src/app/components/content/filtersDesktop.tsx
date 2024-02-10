@@ -30,7 +30,7 @@ const FiltersContent: FC<FilterProps> = ({ filters, filter, setFilter }) => {
                             {name}
                         </Text>
                         <Text
-                            className='ms-1 text-gray-300'
+                            className='ms-2 text-gray-300'
                         >
                             {total}
                         </Text>

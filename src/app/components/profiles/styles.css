@@ -31,3 +31,7 @@
 .profile-individual, .linkedin-logo {
     cursor: pointer;
 }
+
+.text-and {
+    color: var(--primary-color-blue);
+}

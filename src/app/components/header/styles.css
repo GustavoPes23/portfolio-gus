@@ -10,6 +10,12 @@
 .main-logo {
     fill: white;
     height: 2rem;
+    .st0{fill:#FFFFFF;}
+	.st1{fill:#F68661;}
+	.st2{font-family:'Poppins-Bold';}
+	.st3{font-size:78.4005px;}
+	.st4{font-family:'Poppins-Regular';}
+	.st5{fill:#D2FF58;}
 }
 
 .dialog {
