@@ -8,7 +8,7 @@ interface FiltersData {
     total: number;
 };
 
-interface ItemData extends ModalProps {
+interface ItemData {
     readonly id: v4,
     readonly name: string,
     readonly href: string,
@@ -16,6 +16,8 @@ interface ItemData extends ModalProps {
     readonly imageAlt: string,
     readonly tag: string,
     readonly link?: string,
+    open?: boolean;
+    setOpen?: Dispatch<SetStateAction<boolean>>
 }
 
 export type {
