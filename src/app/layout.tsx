@@ -27,7 +27,7 @@ export default function RootLayout({
       <body 
         className={poppins.className}
       >
-        {children}
+          {children}
         <SpeedInsights />
         <Analytics />
       </body>

@@ -1,6 +1,7 @@
 import ApiConfig from "./ApiConfig";
 
 import axios from "axios";
+import { DoPostResponse } from "./types";
 
 export default class Service {
     private instanceApiConfig: ApiConfig | null = null
@@ -22,19 +23,41 @@ export default class Service {
         return apiConfig!.getBaseUrl();
     }
 
-    async doGet(url: string, data?: string) {
+    async doGet(url: string, token: string, data?: string) {
         const baseUrl = this.getBaseUrl();
-        let path = `${baseUrl}${url}`;
+        let path = `${baseUrl}api/${url}`;
 
         data && (path += `?${data}`);
 
-        const response = await axios({
-            method: "get",
-            url: path,
+        try {
+            const response = await axios.get(path, {
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            return response.data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error('Axios Error:', error.message);
+                throw new Error('Network error occurred');
+            } else {
+                console.error('Unexpected Error:', error);
+                throw new Error('An unexpected error occurred');
+            }
+        }
+    }
+
+    async doPost(url: string, data: object): Promise<DoPostResponse> {
+        const baseUrl = this.getBaseUrl();
+        const path = `${baseUrl}/api/${url}`;
+
+        const response = await axios.post(path, data, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
-
-        console.log(path)
-
+        
         return await response.data;
     }
 }

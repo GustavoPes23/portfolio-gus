@@ -1,18 +1,25 @@
-import { Fragment, useState, FC, memo, useMemo } from 'react'
+"use client"
+
+import { Fragment, useState, FC, memo, useMemo, useEffect, useCallback } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 import Main from '../main'
 import Section from '../section'
-import FiltersContent from './filtersDesktop'
+import FiltersDesktop from './filtersDesktop'
 import AllItems from '../allItems'
 import FiltersMobile from './filtersMobile'
 
-import { Filters } from '@/app/constants/Filters'
-import { Items } from '@/app/constants/Items'
 import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE } from '@/app/constants/Tags'
+
+import { getItems } from '@/app/utils/item'
+import { TranslatesTags } from '@/app/constants/Translates'
+
+import BasicLoading from '../loading/basicLoading'
+
 import { FiltersData, ItemData } from '@/app/constants/types'
+import type { ContentProps, UniqueTags } from './types'
 
 const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
     const totalSites: number = Items.filter((item) => item.tag === ID_TAG_SITE)?.length;
@@ -40,11 +47,58 @@ const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
     });
 };
 
-const Index: FC = () => {
+const getFiltersByItem = (items: ItemData[]): FiltersData[] => {
+    const uniqueTags: UniqueTags = {};
+
+    return items.reduce((filters: FiltersData[], { tag }) => {
+        if (!filters.some(filter => filter.id === "geral")) {
+            filters.push({
+                id: "geral",
+                name: "Geral"
+            });
+        }
+
+        if (!uniqueTags[tag]) {
+            uniqueTags[tag] = true;
+
+            filters.push({
+                id: tag,
+                name: TranslatesTags[tag]
+            });
+        }
+
+        return filters;
+    }, []);
+};
+
+const Index: FC<ContentProps> = ({ user }) => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
     const [filter, setFilter] = useState<string>("");
+    const [items, setItems] = useState<ItemData[] | undefined>(undefined);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [filters, setFilters] = useState<FiltersData[] | undefined>(undefined);
 
-    useMemo(() => setTotalFilters(Items, Filters), []);
+    const getAllItems = useCallback(async (): Promise<void> => {
+        if (!user.token) {
+            return;
+        }
+
+        
+        const allItems: ItemData[] = await getItems(user!.token) as unknown as ItemData[];
+        const getFilters: FiltersData[] = getFiltersByItem(allItems);
+
+        setFilters(getFilters);
+        setItems(allItems);
+        setLoading(false);
+    }, [user]);
+
+    useEffect(() => {
+        !items && getAllItems();
+    }, [items, getAllItems]);
+
+    useMemo(() => {
+        items && filters && (setTotalFilters(items, filters));
+    }, [items, filters]);
 
     return (
         <div className="bg-white">
@@ -98,45 +152,49 @@ const Index: FC = () => {
                         <div
                             className='hidden md:inline-flex gap-x-20'
                         >
-                            <FiltersContent
-                                filters={Filters}
+                            <FiltersDesktop
+                                filters={filters}
                                 filter={filter}
                                 setFilter={setFilter}
+                                loading={loading}
                             />
                         </div>
 
                         <div className="flex items-center md:hidden">
-                            <Menu as="div" className="relative inline-block text-left">
-                                <div>
-                                    <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                                        Organizar por
-                                        <ChevronDownIcon
-                                            className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                            aria-hidden="true"
-                                        />
-                                    </Menu.Button>
-                                </div>
-
-                                <Transition
-                                    as={Fragment}
-                                    enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95"
-                                >
-                                    <Menu.Items className="absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                        <div className="py-1">
-                                            <FiltersMobile
-                                                filters={Filters}
-                                                filter={filter}
-                                                setFilter={setFilter}
+                            {loading
+                                ? <BasicLoading />
+                                : <Menu as="div" className="relative inline-block text-left">
+                                    <div>
+                                        <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                                            Organizar por
+                                            <ChevronDownIcon
+                                                className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                                                aria-hidden="true"
                                             />
-                                        </div>
-                                    </Menu.Items>
-                                </Transition>
-                            </Menu>
+                                        </Menu.Button>
+                                    </div>
+
+                                    <Transition
+                                        as={Fragment}
+                                        enter="transition ease-out duration-100"
+                                        enterFrom="transform opacity-0 scale-95"
+                                        enterTo="transform opacity-100 scale-100"
+                                        leave="transition ease-in duration-75"
+                                        leaveFrom="transform opacity-100 scale-100"
+                                        leaveTo="transform opacity-0 scale-95"
+                                    >
+                                        <Menu.Items className="absolute left-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <div className="py-1">
+                                                <FiltersMobile
+                                                    filters={filters}
+                                                    filter={filter}
+                                                    setFilter={setFilter}
+                                                    loading={loading}
+                                                />
+                                            </div>
+                                        </Menu.Items>
+                                    </Transition>
+                                </Menu>}
                         </div>
                     </div>
 
@@ -148,7 +206,8 @@ const Index: FC = () => {
                             <div className="lg:col-span-3">
                                 <AllItems
                                     filter={filter}
-                                    items={Items}
+                                    items={items}
+                                    loading={loading}
                                 />
                             </div>
                         </div>
