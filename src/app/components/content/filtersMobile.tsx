@@ -2,7 +2,7 @@ import { FC, memo, Children } from 'react'
 
 import { Menu } from '@headlessui/react'
 
-import { BasicLoading } from '../loading/loading';
+import BasicLoading from '../loading/basicLoading';
 
 import type { FiltersData } from '@/app/constants/types'
 import type { FilterProps } from './types';
