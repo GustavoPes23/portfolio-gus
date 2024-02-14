@@ -23,8 +23,8 @@ const Index: FC = () => {
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white flex justify-center md:justify-start items-center">Contato</h2>
                             <ul className="text-white dark:text-gray-200 font-medium flex gap-2 justify-center items-center">
-                               <Text>gunastudio@gmail.com</Text>
-                               <EmailIcon />
+                                <EmailIcon />
+                                <Text>gunastudio.br@gmail.com</Text>
                             </ul>
                         </div>
                     </div>
