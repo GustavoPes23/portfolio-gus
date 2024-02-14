@@ -16,7 +16,7 @@ import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE } from '@/app/constants/T
 import { getItems } from '@/app/utils/item'
 import { TranslatesTags } from '@/app/constants/Translates'
 
-import { BasicLoading } from '../loading'
+import { BasicLoading } from '../loading/loading'
 
 import { FiltersData, ItemData } from '@/app/constants/types'
 import type { ContentProps, UniqueTags } from './types'

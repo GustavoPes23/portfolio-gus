@@ -3,7 +3,7 @@ import { FC, useState, Children } from "react";
 import Item from "./item";
 import Modal from "../modal";
 
-import { ImageLoading } from "../loading";
+import { ImageLoading } from "../loading/loading";
 
 import type { ItemsProps } from "./types";
 

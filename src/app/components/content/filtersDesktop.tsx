@@ -6,7 +6,7 @@ import type { FiltersData } from '@/app/constants/types'
 
 import type { FilterProps } from './types';
 
-import { BasicLoading } from '../loading';
+import { BasicLoading } from '../loading/loading';
 
 const classNames = (...classes: string[]): string => classes.filter(Boolean).join(' ');
 
