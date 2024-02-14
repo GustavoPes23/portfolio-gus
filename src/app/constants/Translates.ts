@@ -5,5 +5,6 @@ interface TranslateTagsData {
 export const TranslatesTags: TranslateTagsData = {
     brand_design: "Brand Design",
     logo: "Logo",
-    sites: "Sites"
+    sites: "Sites",
+    motion_video: "Motion&Video"
 };

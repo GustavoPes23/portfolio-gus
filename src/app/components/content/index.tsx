@@ -11,7 +11,7 @@ import FiltersDesktop from './filtersDesktop'
 import AllItems from '../allItems'
 import FiltersMobile from './filtersMobile'
 
-import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE } from '@/app/constants/Tags'
+import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE, ID_TAG_MOTIVO_VIDEO } from '@/app/constants/Tags'
 
 import { getItems } from '@/app/utils/item'
 import { TranslatesTags } from '@/app/constants/Translates'
@@ -25,7 +25,8 @@ const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
     const totalSites: number = Items.filter((item) => item.tag === ID_TAG_SITE)?.length;
     const totalBrandDesign: number = Items.filter((item) => item.tag === ID_TAG_BRAND_DESIGN)?.length;
     const totalLogo: number = Items.filter((item) => item.tag === ID_TAG_LOGO)?.length;
-    const total: number = totalSites + totalBrandDesign + totalLogo;
+    const totalMotionVideo: number = Items.filter((item) => item.tag === ID_TAG_MOTIVO_VIDEO)?.length;
+    const total: number = totalSites + totalBrandDesign + totalLogo + totalMotionVideo;
 
     Filters.forEach((filter) => {
         switch (filter.id) {
@@ -39,6 +40,11 @@ const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
                 break;
             case ID_TAG_LOGO:
                 filter.total = totalLogo;
+
+                break;
+
+            case ID_TAG_MOTIVO_VIDEO:
+                filter.total = totalMotionVideo;
 
                 break;
             default:

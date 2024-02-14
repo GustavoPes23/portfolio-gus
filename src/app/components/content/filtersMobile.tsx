@@ -47,7 +47,7 @@ const FiltersMobile: FC<FilterProps> = ({
                                 'block px-4 py-2 text-sm'
                             )}
                         >
-                            {name}
+                            {name.toUpperCase()}
                         </a>
                     </Menu.Item>
                 ))

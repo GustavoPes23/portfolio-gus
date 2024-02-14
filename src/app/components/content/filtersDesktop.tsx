@@ -46,7 +46,7 @@ const FiltersDesktop: FC<FilterProps> = ({
                     )}
                 >
                     <Text>
-                        {name}
+                        {name.toUpperCase()}
                     </Text>
                     <Text
                         className='ms-2 text-gray-300'

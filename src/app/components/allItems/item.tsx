@@ -24,7 +24,7 @@ const Item: FC<ItemData> = ({
                 <Badge
                     className="badge inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10"
                 >
-                    {TranslatesTags[tag]}
+                    {TranslatesTags[tag].toUpperCase()}
                 </Badge>
                 <ImageWithLazyLoad 
                     src={imageSrc}
