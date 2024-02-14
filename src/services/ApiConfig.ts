@@ -20,10 +20,11 @@ export default class ApiConfig {
     }
 
     public getBaseUrl(): string {
-        if (this.isEnvDev()) {
-            return process.env.REACT_APP_API_URI_DEV || URI_DEVELOPMENT;
-        }
+        // if (this.isEnvDev()) {
+        //     return process.env.REACT_APP_API_URI_DEV || URI_DEVELOPMENT;
+        // }
 
-        return process.env.REACT_APP_API_URI_PROD || URI_DEVELOPMENT;
+
+        return process.env.REACT_APP_API_URI_PROD || "https://portfolio-guna-api.vercel.app/";
     }
 }

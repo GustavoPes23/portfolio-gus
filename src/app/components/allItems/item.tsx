@@ -6,13 +6,15 @@ import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 import { ItemData } from '@/app/constants/types';
 
+import { TranslatesTags } from '@/app/constants/Translates';
+
 const Item: FC<ItemData> = ({ 
-    id, 
-    name, 
-    imageSrc, 
-    imageAlt,
+    tag, 
+    image,
     setOpen
 }) => {
+    const { imageSrc, imageAlt } = image;
+
     return (
         <div 
             className="group relative item"
@@ -22,7 +24,7 @@ const Item: FC<ItemData> = ({
                 <Badge
                     className="badge inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10"
                 >
-                    {name}
+                    {TranslatesTags[tag]}
                 </Badge>
                 <ImageWithLazyLoad 
                     src={imageSrc}
