@@ -25,7 +25,7 @@ export default class Service {
 
     async doGet(url: string, token: string, data?: string) {
         const baseUrl = this.getBaseUrl();
-        let path = `${baseUrl}api/${url}`;
+        let path = `${baseUrl}/api/${url}`;
 
         data && (path += `?${data}`);
 

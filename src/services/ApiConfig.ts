@@ -1,4 +1,4 @@
-import { ENV_DEVELOPMENT, URI_DEVELOPMENT } from "@/app/constants/Env";
+import { ENV_DEVELOPMENT, URI_PRODUCTION } from "@/app/constants/Env";
 
 export default class ApiConfig {
     private env = ENV_DEVELOPMENT;
@@ -20,11 +20,6 @@ export default class ApiConfig {
     }
 
     public getBaseUrl(): string {
-        // if (this.isEnvDev()) {
-        //     return process.env.REACT_APP_API_URI_DEV || URI_DEVELOPMENT;
-        // }
-
-
-        return process.env.REACT_APP_API_URI_PROD || "https://portfolio-guna-api.vercel.app/";
+        return process.env.uri_api_prod || URI_PRODUCTION;
     }
 }
