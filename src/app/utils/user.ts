@@ -14,12 +14,11 @@ import type { DoPostResponse } from '@/services/types';
 
 export const loginAuth = cache(async (): Promise<LoginAuth | void> => {
     try {
-
         const user: string | undefined = process.env.user;
         const pass: string | undefined = process.env.pass;
 
         if (!user || !pass) {
-            return;
+            throw new Error("User or password not found");
         }
 
         const data: UserData = { user, pass };

@@ -4,8 +4,9 @@ const nextConfig = {
         domains: ['www.behance.net', 'cloudinary.com', "res.cloudinary.com"],
     },
     env: {
-        user: "gustavo.pes",
-        pass: "Db5@43b695"
+        user: process.env.REACT_APP_USER,
+        pass: process.env.REACT_APP_USER_PASS,
+        uri_api_prod: process.env.REACT_APP_API_URI_PROD
     },
 };
 
