@@ -2,19 +2,18 @@ import Content from "./components/content";
 import Footer from "./components/footer";
 import Hero from "./components/hero";
 import Profile from "./components/profiles";
+import { LoginAuth } from "./utils/type";
 
 import { loginAuth } from "./utils/user";
 
-import type { DoPostResponse } from "@/services/types";
-
 export default async function Home() {
-  const user: DoPostResponse | undefined = await loginAuth();
+  const user: void | LoginAuth = await loginAuth();
 
   return (
     <>
       <Hero />
       <Content 
-        user={user}
+        user={user!}
       />
       <Profile />
       <Footer />
