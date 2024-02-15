@@ -15,9 +15,9 @@ const FiltersMobile: FC<FilterProps> = ({
     setFilter,
     loading
 }) => {
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string, name: string): void => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, code: string, name: string): void => {
         e.preventDefault();
-        setFilter(id !== "geral" ? id : "")
+        setFilter(code !== "geral" ? code : "")
     };
 
     if (loading || !filters) {
@@ -35,19 +35,19 @@ const FiltersMobile: FC<FilterProps> = ({
     return (
         <>
             {
-                filters.map(({ id, name }: FiltersData) => (
+                filters.map(({ code, description }: FiltersData) => (
                     <Menu.Item
-                        key={id}
+                        key={code}
                     >
                         <a
                             href="#"
-                            onClick={(e) => handleClick(e, id, name)}
+                            onClick={(e) => handleClick(e, code, description)}
                             className={classNames(
-                                filter && filter === id || !filter && id === "geral" ? 'text-black font-semibold' : 'text-gray-400',
+                                filter && filter === code || !filter && code === "geral" ? 'text-black font-semibold' : 'text-gray-400',
                                 'block px-4 py-2 text-sm'
                             )}
                         >
-                            {name.toUpperCase()}
+                            {description.toUpperCase()}
                         </a>
                     </Menu.Item>
                 ))

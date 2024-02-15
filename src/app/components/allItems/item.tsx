@@ -6,14 +6,12 @@ import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 import { ItemData } from '@/app/constants/types';
 
-import { TranslatesTags } from '@/app/constants/Translates';
-
 const Item: FC<ItemData> = ({ 
     tag, 
     image,
     setOpen
 }) => {
-    const { imageSrc, imageAlt } = image;
+    const { src, alt } = image;
 
     return (
         <div 
@@ -24,11 +22,11 @@ const Item: FC<ItemData> = ({
                 <Badge
                     className="badge inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10"
                 >
-                    {TranslatesTags[tag].toUpperCase()}
+                    {tag.description.toUpperCase()}
                 </Badge>
                 <ImageWithLazyLoad 
-                    src={imageSrc}
-                    alt={imageAlt}
+                    src={src}
+                    alt={alt}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
             </div>

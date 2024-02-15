@@ -20,7 +20,7 @@ const getFilter = (filter: string, items?: ItemData[]): null | ItemData[] => {
         return items;
     }
 
-    return items.filter((item) => item.tag === filter);
+    return items.filter((item) => item.tag.code === filter);
 };
 
 const Index: FC<ItemsProps> = ({
@@ -50,7 +50,6 @@ const Index: FC<ItemsProps> = ({
                                 id={id}
                                 name={name}
                                 image={image}
-                                href={""}
                                 tag={tag}
                             />
                         ))

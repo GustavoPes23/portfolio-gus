@@ -11,10 +11,9 @@ import FiltersDesktop from './filtersDesktop'
 import AllItems from '../allItems'
 import FiltersMobile from './filtersMobile'
 
-import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE, ID_TAG_MOTIVO_VIDEO } from '@/app/constants/Tags'
+import { ID_TAG_LOGO, ID_TAG_BRAND_DESIGN, ID_TAG_SITE, ID_TAG_MOTIVO_VIDEO, ID_TAG_GERAL } from '@/app/constants/Tags'
 
 import { getItems } from '@/app/utils/item'
-import { TranslatesTags } from '@/app/constants/Translates'
 
 import BasicLoading from '../loading/basicLoading'
 
@@ -22,14 +21,14 @@ import { FiltersData, ItemData } from '@/app/constants/types'
 import type { ContentProps, UniqueTags } from './types'
 
 const setTotalFilters = (Items: ItemData[], Filters: FiltersData[]): void => {
-    const totalSites: number = Items.filter((item) => item.tag === ID_TAG_SITE)?.length;
-    const totalBrandDesign: number = Items.filter((item) => item.tag === ID_TAG_BRAND_DESIGN)?.length;
-    const totalLogo: number = Items.filter((item) => item.tag === ID_TAG_LOGO)?.length;
-    const totalMotionVideo: number = Items.filter((item) => item.tag === ID_TAG_MOTIVO_VIDEO)?.length;
+    const totalSites: number = Items.filter((item) => item.tag.code === ID_TAG_SITE)?.length;
+    const totalBrandDesign: number = Items.filter((item) => item.tag.code === ID_TAG_BRAND_DESIGN)?.length;
+    const totalLogo: number = Items.filter((item) => item.tag.code === ID_TAG_LOGO)?.length;
+    const totalMotionVideo: number = Items.filter((item) => item.tag.code === ID_TAG_MOTIVO_VIDEO)?.length;
     const total: number = totalSites + totalBrandDesign + totalLogo + totalMotionVideo;
 
     Filters.forEach((filter) => {
-        switch (filter.id) {
+        switch (filter.code) {
             case ID_TAG_SITE:
                 filter.total = totalSites;
 
@@ -57,20 +56,17 @@ const getFiltersByItem = (items: ItemData[]): FiltersData[] => {
     const uniqueTags: UniqueTags = {};
 
     return items.reduce((filters: FiltersData[], { tag }) => {
-        if (!filters.some(filter => filter.id === "geral")) {
+        if (!filters.some(filter => filter.code === ID_TAG_GERAL)) {
             filters.push({
-                id: "geral",
-                name: "Geral"
+                code: ID_TAG_GERAL,
+                description: "Geral"
             });
         }
 
-        if (!uniqueTags[tag]) {
-            uniqueTags[tag] = true;
+        if (!uniqueTags[tag.code]) {
+            uniqueTags[tag.code] = true;
 
-            filters.push({
-                id: tag,
-                name: TranslatesTags[tag]
-            });
+            filters.push(tag);
         }
 
         return filters;
@@ -89,7 +85,6 @@ const Index: FC<ContentProps> = ({ user }) => {
             return;
         }
 
-        
         const allItems: ItemData[] = await getItems(user!.token) as unknown as ItemData[];
         const getFilters: FiltersData[] = getFiltersByItem(allItems);
 
