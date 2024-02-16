@@ -86,6 +86,7 @@ const Index: FC<ContentProps> = ({ user }) => {
         }
 
         const allItems: ItemData[] = await getItems(user!.token) as unknown as ItemData[];
+        
         const getFilters: FiltersData[] = getFiltersByItem(allItems);
 
         setFilters(getFilters);

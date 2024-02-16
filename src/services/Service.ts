@@ -23,11 +23,11 @@ export default class Service {
         return apiConfig!.getBaseUrl();
     }
 
-    async doGet(url: string, token: string, data?: string) {
+    async doGet(url: string, token: string, query?: string) {
         const baseUrl = this.getBaseUrl();
         let path = `${baseUrl}/api/${url}`;
 
-        data && (path += `?${data}`);
+        query && (path += `?${query}`);
 
         try {
             const response = await axios.get(path, {

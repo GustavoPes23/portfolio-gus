@@ -10,7 +10,7 @@ import { ItemData } from '@/app/constants/types'
 export const getItems = cache(async (token: string): Promise<ItemData[]> => {
     try {
         const service = new Service();
-        const response = await service.doGet("item", token);
+        const response = await service.doGet("item", token, "group=tag_code");
 
         if (!response || !response?.success) {
             throw new Error(response?.message || "Failed get user");
