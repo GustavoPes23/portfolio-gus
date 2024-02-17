@@ -1,5 +1,7 @@
 import React, { FC, memo, Suspense } from 'react';
 
+import ImageLoading from '../loading/imageLoading';
+
 import type { ImageProps } from './types';
 
 const LazyImage = React.lazy(() => import('./index'));
@@ -11,7 +13,7 @@ const ImageWithLazyLoad: FC<ImageProps> = ({
 }) => {
     return (
         <Suspense 
-            fallback={<div>Loading...</div>}
+            fallback={<ImageLoading />}
         >
             <LazyImage 
                 className={className} 

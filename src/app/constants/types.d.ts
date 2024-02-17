@@ -8,6 +8,11 @@ interface FiltersData {
     total?: number;
 };
 
+interface SubItems {
+    readonly link: string;
+    readonly width?: string;
+}
+
 interface ItemData {
     readonly id: v4,
     readonly name: string,
@@ -20,12 +25,12 @@ interface ItemData {
         readonly code: string,
         readonly description: string
     },
-    readonly link?: string,
-    open?: boolean;
-    setOpen?: Dispatch<SetStateAction<boolean>>
+    readonly subItems: SubItems[];
+    readonly link?: string
 }
 
 export type {
     FiltersData,
-    ItemData
+    ItemData,
+    SubItems
 };
