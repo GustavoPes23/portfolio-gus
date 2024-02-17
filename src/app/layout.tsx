@@ -7,14 +7,17 @@ import { Analytics } from '@vercel/analytics/react';
 
 import "./globals.css";
 
-const poppins = Poppins({ 
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] 
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 export const metadata: Metadata = {
   title: "Portfolio Guna",
   description: "Portfolio Guna",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body 
+      <body
         className={poppins.className}
       >
-          {children}
+        {children}
         <SpeedInsights />
         <Analytics />
       </body>
