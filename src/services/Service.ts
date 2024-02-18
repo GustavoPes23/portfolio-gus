@@ -3,6 +3,8 @@ import ApiConfig from "./ApiConfig";
 import axios from "axios";
 import { DoPostResponse } from "./types";
 
+import { CacheRevalidate } from "@/app/constants/CacheRevalidate";
+
 export default class Service {
     private instanceApiConfig: ApiConfig | null = null
 
@@ -52,12 +54,17 @@ export default class Service {
         const baseUrl = this.getBaseUrl();
         const path = `${baseUrl}/api/${url}`;
 
-        const response = await axios.post(path, data, {
+        const response = await fetch(path, {
             headers: {
                 'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(data),
+            next: { 
+                revalidate: CacheRevalidate
             }
         });
         
-        return await response.data;
+        return await response.json();
     }
 }
