@@ -1,4 +1,4 @@
-import { Fragment, useRef, FC, memo, Children  } from 'react'
+import { Fragment, useRef, FC, memo, Children } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 import type { ModalProps } from "./types";
@@ -14,7 +14,7 @@ const Index: FC<ModalProps> = ({
     subItems,
     usingMarginModal
 }) => {
-    const cancelButtonRef = useRef(null);
+    const cancelButtonRef = useRef<HTMLButtonElement>(null);
     const arrItems: SubItems[] = Object.values(subItems);
 
     return (
@@ -43,11 +43,25 @@ const Index: FC<ModalProps> = ({
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <Dialog.Panel
+                                className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl"
+                            >
+                                <div className="fixed top-0 right-0 mt-4 mr-4">
+                                    <div className="sm:hidden">
+                                        <button
+                                            type="button"
+                                            className="text-white text-2xl"
+                                            onClick={() => setOpen(false)}
+                                            ref={cancelButtonRef}
+                                        >
+                                            X
+                                        </button>
+                                    </div>
+                                </div>
                                 {Children.toArray(
                                     arrItems.map(({ link }: SubItems, index) => (
                                         <>
-                                            <ImageWithLazyLoad 
+                                            <ImageWithLazyLoad
                                                 src={link}
                                                 alt={link}
                                             />
