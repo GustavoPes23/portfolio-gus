@@ -5,7 +5,9 @@ import Modal from "../modal";
 
 import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
-import { ItemData } from '@/app/constants/types';
+import { ID_TAG_MOTIVO_VIDEO } from '@/app/constants/Tags';
+
+import type { ItemData } from '@/app/constants/types';
 
 const Item: FC<ItemData> = ({
     tag,
@@ -14,6 +16,8 @@ const Item: FC<ItemData> = ({
 }) => {
     const [open, setOpen] = useState<boolean>(false);
     const { src, alt } = image;
+    const { code, description } = tag;
+    const usingMarginModal: boolean = subItems && code === ID_TAG_MOTIVO_VIDEO;
 
     return (
         <>
@@ -25,7 +29,7 @@ const Item: FC<ItemData> = ({
                     <Badge
                         className="badge inline-flex items-center rounded-md bg-black/50 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10"
                     >
-                        {tag.description.toUpperCase()}
+                        {description.toUpperCase()}
                     </Badge>
                     <ImageWithLazyLoad
                         src={src}
@@ -39,6 +43,7 @@ const Item: FC<ItemData> = ({
                     open={open}
                     setOpen={setOpen}
                     subItems={subItems}
+                    usingMarginModal={usingMarginModal}
                 />
             )}
         </>

@@ -6,10 +6,13 @@ import ImageWithLazyLoad from '../image/imageWithLazyLoad';
 
 import type { SubItems } from '@/app/constants/types';
 
+import Hr from '../hr';
+
 const Index: FC<ModalProps> = ({
     open,
     setOpen,
-    subItems
+    subItems,
+    usingMarginModal
 }) => {
     const cancelButtonRef = useRef(null);
     const arrItems: SubItems[] = Object.values(subItems);
@@ -42,11 +45,14 @@ const Index: FC<ModalProps> = ({
                         >
                             <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
                                 {Children.toArray(
-                                    arrItems.map(({ link }: SubItems) => (
-                                        <ImageWithLazyLoad 
-                                            src={link}
-                                            alt={link}
-                                        />
+                                    arrItems.map(({ link }: SubItems, index) => (
+                                        <>
+                                            <ImageWithLazyLoad 
+                                                src={link}
+                                                alt={link}
+                                            />
+                                            {usingMarginModal && index !== arrItems.length - 1 && (<Hr />)}
+                                        </>
                                     ))
                                 )}
                             </Dialog.Panel>

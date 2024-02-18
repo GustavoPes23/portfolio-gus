@@ -2,8 +2,9 @@ import { SubItems } from "@/app/constants/types";
 
 interface ModalProps {
     open: boolean;
-    setOpen: Dispatch<SetStateAction<boolean>>;
-    subItems: SubItems[];
+    readonly setOpen: Dispatch<SetStateAction<boolean>>;
+    readonly subItems: SubItems[];
+    readonly usingMarginModal: boolean
 }
 
 export type {
