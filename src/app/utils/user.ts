@@ -1,5 +1,3 @@
-"use server"
-
 import { cache } from 'react'
 
 import Service from "@/services/Service";
