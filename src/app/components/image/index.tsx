@@ -10,11 +10,9 @@ const Index: FC<ImageProps> = ({
     alt
 }) => {
     return (
-        <Image
+        <img
             loading="lazy"
             src={src}
-            width={500}
-            height={500}
             alt={alt}
             className={`h-full w-full object-cover object-center ${className || ""}`}
         />
