@@ -56,13 +56,14 @@ export default class Service {
 
         const response = await fetch(path, {
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             method: "POST",
             body: JSON.stringify(data),
-            next: { 
-                revalidate: CacheRevalidate
-            }
+            // next: { 
+            //     revalidate: CacheRevalidate
+            // }
+            cache: "no-store"
         });
         
         return await response.json();
