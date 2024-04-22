@@ -210,6 +210,7 @@ const Index: FC<ContentProps> = ({ user }) => {
                                     filter={filter}
                                     items={items}
                                     loading={loading}
+                                    setItems={setItems}
                                 />
                             </div>
                         </div>

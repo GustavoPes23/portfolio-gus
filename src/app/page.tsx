@@ -12,9 +12,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <Content 
-        user={user!}
-      />
+      <Content user={user!} />
       <Profile />
       <Footer />
     </>
